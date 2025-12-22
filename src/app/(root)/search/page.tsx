@@ -7,11 +7,11 @@ import { ResponsiveProfile } from '../../../components/ResponsiveProfile';
 import { Metadata } from 'next';
 
 type SearchPageProps = {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 const getSearchQuery = (
-  searchParams: SearchPageProps['searchParams'],
+  searchParams: { [key: string]: string | string[] | undefined },
 ): string => {
   const s = searchParams.s;
   return Array.isArray(s) ? s[0] : s || '';
@@ -23,7 +23,7 @@ const generatePageTitle = (searchQuery: string): string =>
 export async function generateMetadata({
   searchParams,
 }: SearchPageProps): Promise<Metadata> {
-  const searchQuery = getSearchQuery(searchParams);
+  const searchQuery = getSearchQuery(await searchParams);
   const pageTitle = generatePageTitle(searchQuery);
 
   return {
@@ -32,8 +32,8 @@ export async function generateMetadata({
   };
 }
 
-export default function Page({ searchParams }: SearchPageProps) {
-  const searchQuery = getSearchQuery(searchParams);
+export default async function Page({ searchParams }: SearchPageProps) {
+  const searchQuery = getSearchQuery(await searchParams);
   const pageTitle = generatePageTitle(searchQuery);
 
   return (

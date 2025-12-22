@@ -5,13 +5,13 @@ import { ArticleContent } from '../../../../types/article';
 import { isValidCategory } from '../../../../lib/categories';
 
 type RouteContext = {
-  params: {
+  params: Promise<{
     category: string;
-  };
+  }>;
 };
 
 export async function GET(request: Request, context: RouteContext) {
-  const { category } = context.params;
+  const { category } = await context.params;
 
   if (!isValidCategory(category)) {
     return NextResponse.json({ error: 'Invalid category' }, { status: 400 });

@@ -16,9 +16,9 @@ import {
 } from '../../../../lib/categories';
 
 type PageProps = {
-  params: {
+  params: Promise<{
     category: string;
-  };
+  }>;
 };
 
 export async function generateStaticParams() {
@@ -30,7 +30,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { category } = params;
+  const { category } = await params;
 
   if (!isValidCategory(category)) {
     return {
@@ -46,8 +46,8 @@ export async function generateMetadata({
   };
 }
 
-export default function Page({ params }: PageProps) {
-  const { category } = params;
+export default async function Page({ params }: PageProps) {
+  const { category } = await params;
 
   if (!isValidCategory(category)) {
     notFound();
