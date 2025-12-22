@@ -15,10 +15,8 @@ export default function CustomErrorPage() {
         <p className="mt-2 mb-10">
           申し訳ありませんが、リクエストされたページが見つかりませんでした。
         </p>
-        <Link href="/" legacyBehavior>
-          <a className="mt-10 px-6 py-3 text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition-colors duration-300 ease-in-out">
-            トップページに戻る
-          </a>
+        <Link href="/" className="mt-10 px-6 py-3 text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition-colors duration-300 ease-in-out">
+          トップページに戻る
         </Link>
       </div>
     </div>

@@ -15,17 +15,18 @@ import {
 } from '../../../../../lib/categories';
 
 type PageProps = {
-  params: {
+  params: Promise<{
     category: string;
     id: string;
-  };
+  }>;
 };
 
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
+  const { id } = await params;
   try {
-    const blogData: ArticleContent = await blogDetailData(params.id);
+    const blogData: ArticleContent = await blogDetailData(id);
 
     return {
       title: blogData.title,
@@ -39,7 +40,7 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: PageProps) {
-  const { category, id } = params;
+  const { category, id } = await params;
 
   if (!isValidCategory(category)) {
     notFound();
