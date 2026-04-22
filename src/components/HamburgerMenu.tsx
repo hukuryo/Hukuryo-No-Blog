@@ -27,7 +27,7 @@ type MenuItem = {
 
 const MENU_ITEMS: MenuItem[] = [
   { href: '/', icon: FaHome, text: 'トップページ' },
-  { href: '/articles/tech', icon: FaLaptopCode, text: '技術記事' },
+  { href: '/articles/tech', icon: FaLaptopCode, text: '技術関連記事' },
   { href: '/articles/books', icon: FaBook, text: '読んだ本' },
   { href: '/articles/hobby', icon: FaGamepad, text: '趣味' },
   { href: '/profile', icon: FaUser, text: 'プロフィール' },
