@@ -14,12 +14,8 @@ export type ArticleContent = BaseContent & {
   pass: string;
 };
 
-export type BlogContent = BaseContent & {
+type BlogContent = BaseContent & {
   imageUrl: ImageUrl;
-};
-
-export type ArticleProps = {
-  pass: string;
 };
 
 export type BlogIdProps = {

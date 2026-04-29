@@ -1,0 +1,13 @@
+{
+  "ignoreDependencies": [
+    "babel-plugin-react-compiler",
+    "eslint-config-next",
+    "sharp"
+  ],
+  "ignoreExports": [
+    {
+      "file": "**/not-found.tsx",
+      "exports": ["metadata"]
+    }
+  ]
+}

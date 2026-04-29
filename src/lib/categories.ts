@@ -1,4 +1,4 @@
-export type CategoryKey = 'tech' | 'hobby' | 'books';
+type CategoryKey = 'tech' | 'hobby' | 'books';
 
 type CategoryConfig = {
   title: string;
